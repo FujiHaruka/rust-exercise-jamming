@@ -11,5 +11,15 @@ struct CliArgs {
 
 fn main() {
     let args = CliArgs::parse();
-    println!("Hello, world! {:#?}", args);
+
+    let text = args.text;
+    let delimiter = args.delimiter;
+
+    let jammed = text
+        .split("")
+        .filter(|st| st.len() > 0)
+        .collect::<Vec<&str>>()
+        .join(&delimiter);
+
+    println!("{}", jammed);
 }
